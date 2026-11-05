@@ -1,0 +1,15 @@
+flowchart TB
+    T[Tokens de sortie<br/>T_out] --> G["E_GPU = T_out × f_E(P_actifs) × n_GPU"]
+    M[Paramètres du modèle<br/>P_total, P_actifs] --> N["n_GPU = puissance de 2 ≥ 1,2·P_total·2 / 80"]
+    N --> G
+    T --> L["ΔT = T_out × f_L(P_actifs)"]
+    L --> SV["E_serveur hors GPU = ΔT × 1,2 kW × n_GPU/8 / 64"]
+    N --> SV
+    G --> IT["E_serveur = E_GPU + E_hors GPU"]
+    SV --> IT
+    IT --> PUE["E_requête = PUE × E_serveur"]
+    PUE --> CO2["CO₂e = E × intensité carbone"]
+    IT --> EAU["Eau = E_serveur × (WUE_site + PUE × WUE_hors site)"]
+    PUE --> SC["× requêtes / semaine × 52"]
+    classDef g fill:#E8F5E9,stroke:#2E7D32,color:#1B2E1B;
+    class G,N,L,SV,IT,PUE,CO2,EAU,SC g;

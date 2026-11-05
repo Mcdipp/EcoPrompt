@@ -1,0 +1,20 @@
+flowchart TB
+    subgraph IHM["Couche présentation — Streamlit"]
+      app[app.py<br/>6 pages, graphiques Plotly]
+    end
+    subgraph LOG["Couche métier — Python pur, testée"]
+      calc[calculations.py<br/>EcoLogits, CO₂, eau, validation]
+      al[alerts.py<br/>seuils configurables, conseils]
+    end
+    subgraph DATA["Couche données"]
+      cfg[config.py<br/>paramètres + bibliographie]
+      dm[data_manager.py]
+      db[(data/ecoprompt.db<br/>SQLite local)]
+    end
+    tests[tests/ — pytest<br/>59 tests] -.vérifie.-> calc & al & dm & app
+    app --> calc & al & dm
+    calc --> cfg
+    al --> cfg
+    dm --> db
+    classDef g fill:#E8F5E9,stroke:#2E7D32,color:#1B2E1B;
+    class app,calc,al,cfg,dm g;

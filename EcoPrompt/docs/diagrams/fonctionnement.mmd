@@ -1,0 +1,15 @@
+flowchart LR
+    U([Utilisateur]) -->|requêtes, fréquence,<br/>tokens, modèle| S[Simulation<br/>app.py]
+    P[(Paramètres sourcés<br/>config.py)] --> C
+    S --> C[Moteur de calcul<br/>calculations.py]
+    C -->|Wh| E[Énergie]
+    E -->|× g CO₂e/kWh| CO2[Émissions CO₂e]
+    E -->|× WUE L/kWh| W[Eau]
+    E --> A[Alertes<br/>alerts.py]
+    A -->|vert / orange / rouge<br/>+ conseils| S
+    S -->|enregistrer| D[(Historique SQLite<br/>data_manager.py)]
+    D --> TB[Tableau de bord<br/>Plotly]
+    C --> CI[Mon impact citoyen<br/>scénarios comparés]
+    classDef g fill:#E8F5E9,stroke:#2E7D32,color:#1B2E1B;
+    classDef y fill:#FFF8E1,stroke:#F9A825,color:#3E2F00;
+    class S,C,A,TB,CI g; class P,D y;

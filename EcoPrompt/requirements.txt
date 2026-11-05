@@ -1,0 +1,6 @@
+# EcoPrompt — dépendances (Python 3.10 ou plus récent)
+streamlit>=1.40,<2
+pandas>=2.0
+plotly>=5.20
+pytest>=8.0
+reportlab>=4.0         # uniquement pour régénérer le rapport PDF
