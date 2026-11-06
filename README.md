@@ -13,11 +13,11 @@ Python 3.10+ · Streamlit (interface) · Pandas (données) · Plotly (graphiques
 # Archi du projet
 
 EcoPrompt/
-├── app.py              # Interface Streamlit
-├── calculations.py     # Formules EcoLogits, CO₂, eau, validation des entrées 
-├── alerts.py           # Niveaux d'alerte configurables et conseils
-├── data_manager.py     # Historique SQLite (ajout, lecture, export CSV)
-├── config.py           # Parametres + bibliographie (chaque valeur avec une source)
+├── app.py              
+├── calculations.py      
+├── alerts.py           
+├── data_manager.py     
+├── config.py           
 ├── requirements.txt
 ├── README.md
 ├── LICENSE             
